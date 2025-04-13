@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 200px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+        }
+        .cart-items li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>E-Commerce Shop</h2>
+    <div class="shop-container">
+        <div class="product" data-name="Product 1" data-price="29.99">
+            <img src="product1.jpg" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>$29.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 2" data-price="39.99">
+            <img src="product2.jpg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>$39.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 3" data-price="49.99">
+            <img src="product3.jpg" alt="Product 3">
+            <h3>Product 3</h3>
+            <p>$49.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+    
+    <div class="cart">
+        <h3>Shopping Cart</h3>
+        <ul class="cart-items"></ul>
+        <p><strong>Total:</strong> $<span id="cart-total">0.00</span></p>
+    </div>
+    
+    <script>
+        let cart = [];
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', event => {
+                const product = event.target.closest('.product');
+                const name = product.getAttribute('data-name');
+                const price = parseFloat(product.getAttribute('data-price'));
+                
+                cart.push({ name, price });
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                cartItemsContainer.appendChild(li);
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

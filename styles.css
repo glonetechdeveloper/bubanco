@@ -1,0 +1,45 @@
+body{
+    background-color: #bf40bf;
+}
+.name{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #bf40bf;
+}
+.theme-color{
+    background-color: #bf40bf;
+    text-emphasis-color: red;
+}
+.navbar-brand{
+    color: #bf40bf;
+}
+.head{
+    background-color: #bf40bf;
+}
+.Buba{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+    background-color: #bf40bf
+}
+.body{
+    background-color: #bf40bf;
+}
+.that{
+    justify-content: center;
+    justify-self: center;
+}
+.navbar-brand{
+    color: #bf40bf;
+}
+#who{
+    color: #bf40bf;
+}
+.flex-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+.cloth{
+    font-size: 1.5rem;
+}
